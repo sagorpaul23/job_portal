@@ -1,0 +1,78 @@
+.container {
+  padding: 0 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 28px;
+}
+
+.cardHeader {
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 12px;
+}
+
+.status {
+  width: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4px;
+  background: #fff2e8;
+  border-radius: 200px;
+  padding: 2px 0;
+  margin-bottom: 8px;
+}
+
+.verificationText {
+  font-size: 12px;
+}
+
+.logo {
+  height: 48px;
+  width: 48px;
+}
+
+.address {
+  font-size: 12px;
+}
+
+.name {
+  margin: 0 !important;
+  font-weight: 600;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 32px;
+}
+
+.jobTypes {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.salaryRange {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.button {
+  color: #fff;
+  background-color: #24a6a4;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: #24a6a4 !important;
+  }
+}
