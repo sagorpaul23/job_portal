@@ -1,4 +1,3 @@
-import {useRouter} from "next/router";
 import {Button, Card, Col, Divider, List, Row, Space, Tag} from "antd";
 import {IoLocationSharp} from "react-icons/io5";
 import {AiFillDollarCircle} from "react-icons/ai";
@@ -6,16 +5,16 @@ import {FiSend} from "react-icons/fi";
 import {FaUserCog, FaUsers} from "react-icons/fa";
 import {HiBadgeCheck} from "react-icons/hi";
 import {BsFillBagCheckFill} from "react-icons/bs";
-import image from "./assets/images/foxhub2.png"
+import image from "../assets/images/foxhub2.png"
 import Image from 'next/image'
-import styles from "../../styles/PublicJobDetailsPage.module.scss"
+import styles from "../../../styles/PublicJobDetailsPage.module.scss"
 import Head from "next/head";
-import PageHeader from "../../Components/PageHeader/PageHeader";
+import PageHeader from "../../../Components/PageHeader/PageHeader";
 import {MdArrowBackIosNew} from "react-icons/md";
 import Link from "next/link";
-import axios from "../../Config/axios";
+import axios from "../../../Config/axios";
 import {TbCurrencyTaka} from "react-icons/tb";
-import {nFormatter, salary} from "../../helper/utils";
+import {nFormatter, salary} from "../../../helper/utils";
 
 export async function getServerSideProps(context) {
     let param = context;
@@ -86,7 +85,7 @@ const JobId = ({jobDetails}) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <Link href={`/applyjob/${jobDetails.id}`}>
+                                    <Link href={`/jobs/${jobDetails.id}/applyjob`} state={{id: jobDetails?.id}}>
                                         <Button
                                             className={styles.button_style}
                                             type={'primary'}
@@ -100,7 +99,7 @@ const JobId = ({jobDetails}) => {
 
                             <Divider/>
 
-                            <div className="skill_section">
+                            <div className={styles.skill_section}>
                                 <h2 className={'skills'}>Skills : </h2>
                                 {jobDetails?.skills?.split(',').map((skill, index) => (
                                     <Space size={[0, 8]} wrap key={index}>
@@ -110,9 +109,7 @@ const JobId = ({jobDetails}) => {
                             </div>
                             <div>
                                 <h2>Job Description : </h2>
-                                <div
-                                    className={'description'}
-                                    dangerouslySetInnerHTML={{__html: jobDetails?.description}}/>
+                                <div dangerouslySetInnerHTML={{__html: jobDetails?.description}}/>
                             </div>
                         </Card>
                     </Col>

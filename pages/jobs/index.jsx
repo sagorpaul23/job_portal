@@ -74,8 +74,7 @@ const Jobs = ({jobs}) => {
                                         </div>
                                         {/***Card body***/}
                                         <div>
-                                            <Link href={`/jobs/${job.id}`}
-                                                  state={{id: job.id, employee: true}}>
+                                            <Link href={`/jobs/${job.id}`} state={{id: job.id}}>
                                                 <Typography.Title level={4} style={{marginTop: 0}}>
                                                     {job?.job_title}
                                                 </Typography.Title>
@@ -103,8 +102,12 @@ const Jobs = ({jobs}) => {
                                                     </Typography.Text>
                                                 </div>
                                             </div>
-                                            <Link href={`/applyjob/${job.id}`}>
-                                                <Button className={styles.button} type="primary">APPLY NOW</Button>
+                                            <Link href={`/jobs/${job.id}/applyjob`} state={{id: job.id}}>
+                                                <Button
+                                                    className={styles.button}
+                                                    type="primary">
+                                                    APPLY NOW
+                                                </Button>
                                             </Link>
                                         </div>
                                     </div>

@@ -1,17 +1,22 @@
-import styles from "../../styles/PublicJobDetailsPage.module.scss";
-import Head from "next/head";
-import Link from "next/link";
+import {useRouter} from 'next/router';
+import {useState} from "react";
 import {Button, Card, Col, Form, Input, message, Row, Upload} from "antd";
+import styles from "../../../../styles/PublicJobDetailsPage.module.scss";
+import Head from "next/head";
 import {MdArrowBackIosNew} from "react-icons/md";
-import PageHeader from "../../Components/PageHeader/PageHeader";
+import PageHeader from "../../../../Components/PageHeader/PageHeader";
+import axios from "../../../../Config/axios";
 import {CountryPhoneInput} from "antd-country-phone-input";
-import TextArea from "antd/es/input/TextArea";
 import {InboxOutlined} from "@ant-design/icons";
-import axios from "../../Config/axios";
 
-const {Dragger} = Upload;
-const JobApplyId = () => {
-
+const applyjob = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [loading, setLoading] = useState(false)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [uploadFile, setUploadFile] = useState([])
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const router = useRouter();
+    let id = router?.query?.jobId
     const normFile = (e) => {
         if (Array.isArray(e)) {
             return e;
@@ -19,7 +24,7 @@ const JobApplyId = () => {
         return e?.fileList;
     };
     const onRemoveFile = (e) => {
-        // setUploadFile((prev) => prev.filter((f) => f?.name !== e?.name));
+        setUploadFile((prev) => prev.filter((f) => f?.name !== e?.name));
     }
     const handleImageUpload = async (options) => {
         const {onSuccess, onError, file} = options;
@@ -31,7 +36,7 @@ const JobApplyId = () => {
             const res = await axios.post("/organizations/commons/files", fmData, {withCredentials: true});
             // console.log(res)
             message.success(res.data.msg)
-            // setUploadFile([...uploadFile, {id: res.data.results.id, name: res.data.results.name}])
+            setUploadFile([...uploadFile, {id: res.data.results.id, name: res.data.results.name}])
             // call onSuccess function if you have successfully uploaded the image
             onSuccess("Ok");
             // show success message
@@ -43,6 +48,27 @@ const JobApplyId = () => {
             message.error("Failed to upload image");
         }
     };
+
+    const PHONE_REGEX = /^[]?[(]?[0-9]{3}[)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4,6}$/;
+    const onFinish = (values) => {
+        setLoading(true)
+        values.job_opening = parseInt(id)
+        values.phone_number = (values?.phone_number?.code).toString() + values?.phone_number?.phone
+        values.cv = 'https://www.africau.edu/images/default/sample.pdf'
+        // console.log(values)
+        axios.post(`/public/hr/hiring/job-applications`, values)
+            .then(res => {
+                // console.log(res)
+                message?.success(res?.data?.msg)
+                setLoading(false)
+                router.push('/jobs')
+            })
+            .catch(err => {
+                console.log(err)
+                message?.error(err?.response?.data?.msg)
+                setLoading(false)
+            })
+    }
     return (
         <div className={styles.container}>
             <Head>
@@ -52,22 +78,21 @@ const JobApplyId = () => {
             </Head>
             <div className='page-header'>
                 <div>
-                    <Link href={`/jobs`} replace={true}>
-                        <Button
-                            className={'button'}
-                            icon={<MdArrowBackIosNew className={'icon'} size={16}/>}>
-                        </Button>
-                    </Link>
+                    <Button
+                        onClick={() => router.back()}
+                        className={'button'}
+                        icon={<MdArrowBackIosNew className={'icon'} size={16}/>}>
+                    </Button>
 
                     <PageHeader title={'Job Apply'}/>
                 </div>
             </div>
-
             <Card bordered={false}>
                 <Form
                     layout={'vertical'}
                     scrollToFirstError={true}
                     autoComplete={"off"}
+                    onFinish={onFinish}
                 >
                     <Row gutter={[30, 15]}>
                         <Col xs={24} sm={24} md={12} lg={12}>
@@ -87,11 +112,10 @@ const JobApplyId = () => {
                             <Form.Item
                                 label="Email"
                                 name="email"
-                                className={'work_email'}
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please input work email of new employee!',
+                                        message: 'Email is required!',
                                     },
                                     {
                                         pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -109,11 +133,15 @@ const JobApplyId = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Address is required'
+                                        message: 'Address is required!'
                                     }
                                 ]}
                             >
-                                <TextArea placeholder={"Please write address"} rows={4} showCount maxLength={500}/>
+                                <Input.TextArea
+                                    placeholder={"Please write address"}
+                                    rows={4}
+                                    showCount
+                                    maxLength={500}/>
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={24} md={12} lg={12}>
@@ -143,7 +171,9 @@ const JobApplyId = () => {
                                     },
                                     {
                                         validator: (_, value) => {
-                                            if ((value?.code)?.toString() === "880" && parseInt(value.phone[0]) === 0) {
+                                            if (value.phone === '' || value.phone === undefined) {
+                                                return Promise.reject("Phone number is required!")
+                                            } else if ((value?.code)?.toString() === "880" && parseInt(value.phone[0]) === 0) {
                                                 return Promise.reject("Phone number first digit must be except 0")
                                             } else if (value?.phone !== undefined) {
                                                 if (value?.phone.length > 0) {
@@ -190,7 +220,7 @@ const JobApplyId = () => {
                                         }
                                     ]}
                                 >
-                                    <Dragger
+                                    <Upload.Dragger
                                         multiple={true}
                                         customRequest={handleImageUpload}
                                         onRemove={e => onRemoveFile(e)}
@@ -201,14 +231,14 @@ const JobApplyId = () => {
                                         </p>
                                         <p className="ant-upload-text">Click or drag file to this area to upload</p>
                                         <p className="ant-upload-hint">Support single or bulk upload.</p>
-                                    </Dragger>
+                                    </Upload.Dragger>
                                 </Form.Item>
                             </Form.Item>
                         </Col>
                     </Row>
 
 
-                    <Button type="primary" htmlType='submit'>
+                    <Button type="primary" htmlType='submit' loading={loading}>
                         Apply
                     </Button>
 
@@ -218,4 +248,4 @@ const JobApplyId = () => {
     );
 };
 
-export default JobApplyId;
+export default applyjob;
