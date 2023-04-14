@@ -1,7 +1,16 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {Button, Card} from "antd";
+import {Button, Card, Col, Row} from "antd";
 import Link from "next/link";
+import Image from "next/image";
+import AccountCreate from "../public/account-create.svg"
+import CreateResume from "../public/create-resume.svg"
+import FindJobs from "../public/job-find.svg"
+import ApplyJobs from "../public/job-apply.svg"
+import Job from "../public/job2.svg"
+import Companies from "../public/companies.svg"
+import Candidates from "../public/candidates.svg"
+import NewJobs from "../public/new-jobs.svg"
 
 export default function Home() {
     return (
@@ -12,15 +21,139 @@ export default function Home() {
                 <link rel="icon" href="/download.png"/>
             </Head>
 
-            <Card className={styles.card} bordered={false}>
-                <div className={styles.hcenter}>
-                    <h1 className={`styles.title !k-mb-2`}>Job Portal</h1>
-                    <div className={styles.button}>
-                        <Button type={'primary'}>
-                            <Link href={'/jobs'}>Go to Jobs Page</Link>
-                        </Button>
+            <Card className={styles.card} bordered={false} bodyStyle={{padding: 0}}>
+                <div className={'hero1'}>
+                    <div className="container">
+                        <Row>
+                            <Col span={24}>
+                                <div className="hero-content">
+                                    <h1>Your Career’s <span>Opportunity.</span></h1>
+                                    <p><span>2400</span> Peoples are daily search in this portal, <span>100</span> user
+                                        added job portal!</p>
+                                    <div className="counter-area">
+                                        <Row gutter={[0, 40]}>
+                                            <Col className={'counter'} xs={24} sm={24} lg={7} xl={6}>
+                                                <div className="counter-single">
+                                                    <div className="counter-icon">
+                                                        <Image src={Job} alt={'job'}/>
+                                                    </div>
+                                                    <div className="coundown">
+                                                        <p>Live Jobs</p>
+                                                        <div className="example">
+                                                            <h3 className="odometer">20223</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={24} sm={24} lg={7} xl={6}>
+                                                <div className="counter-single">
+                                                    <div className="counter-icon">
+                                                        <Image src={Companies} alt={'job'}/>
+                                                    </div>
+                                                    <div className="coundown">
+                                                        <p>Companies</p>
+                                                        <div className="example">
+                                                            <h3 className="odometer">802 +</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={24} sm={24} lg={7} xl={6}>
+                                                <div className="counter-single">
+                                                    <div className="counter-icon">
+                                                        <Image src={Candidates} alt={'job'}/>
+                                                    </div>
+                                                    <div className="coundown">
+                                                        <p>Candidates</p>
+                                                        <div className="example">
+                                                            <h3 className="odometer">12 +</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={24} sm={24} lg={7} xl={6}>
+                                                <div className="counter-single">
+                                                    <div className="counter-icon">
+                                                        <Image src={NewJobs} alt={'job'}/>
+                                                    </div>
+                                                    <div className="coundown">
+                                                        <p>New Jobs</p>
+                                                        <div className="example">
+                                                            <h3 className="odometer">2 +</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div className="job-search-area">
+                                        <div className="button-section">
+                                            <Button type={'primary'} className={'primary-btn'}>
+                                                <Link href={'/jobs'}>Go to Jobs Page</Link>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
                     </div>
                 </div>
+
+                <Row className={'mb-60'} justify={'center'}>
+                    <Col span={24}>
+                        <div className="section-title1 text-center">
+                            <h2>JOBES Working <span>process</span></h2>
+                            <p>To choose your trending job dream & to make future bright.</p>
+                        </div>
+                    </Col>
+                </Row>
+                <Row justify={'center'}>
+                    <Col sm={12} lg={8} xl={5}>
+                        <div className="single-work-process one text-center">
+                            <div className="icons">
+                                <Image src={AccountCreate} alt={'account create'}/>
+                            </div>
+                            <div className="work-content">
+                                <h5>Account Create</h5>
+                                <p>To create your account be confident & safely.</p>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col sm={12} lg={8} xl={5}>
+                        <div className="single-work-process two text-center">
+                            <div className="icons">
+                                <Image src={CreateResume} alt={'account create'}/>
+                            </div>
+                            <div className="work-content">
+                                <h5>Create Resume</h5>
+                                <p>To create your account be confident & safely.</p>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col sm={12} lg={8} xl={5}>
+                        <div className="single-work-process one text-center">
+                            <div className="icons">
+                                <Image src={FindJobs} alt={'account create'}/>
+                            </div>
+                            <div className="work-content">
+                                <h5>Find Jobs</h5>
+                                <p>To create your account be confident & safely.</p>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col sm={12} lg={8} xl={5}>
+                        <div className="single-work-process two text-center">
+                            <div className="icons">
+                                <Image src={ApplyJobs} alt={'account create'}/>
+                            </div>
+                            <div className="work-content">
+                                <h5>Apply Jobs</h5>
+                                <p>To create your account be confident & safely.</p>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+
             </Card>
         </div>
     )

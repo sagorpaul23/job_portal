@@ -67,7 +67,7 @@ const JobId = ({jobDetails}) => {
                                         </div>
                                         <div className={styles.salary}>
                                             {
-                                                jobDetails?.salary_currency === "BDT" ?
+                                                jobDetails?.salary_currency === "BD" ?
                                                     <TbCurrencyTaka
                                                         className={'icon'}
                                                         color={'#87d068'}

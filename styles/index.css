@@ -1,0 +1,214 @@
+.hero1 {
+    background-image: url("../public/h1-hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+}
+
+.hero1::before {
+    content: "";
+    background-color: rgba(0, 0, 0, .75);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.hero1 .hero-content {
+    position: relative;
+    z-index: 99;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 220px 0;
+}
+
+.hero1 .hero-content h1 {
+    font-size: 5.688rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hero1 .hero-content h1 span {
+    color: #00A7AC;
+}
+
+.hero1 .hero-content > p {
+    font-size: 1.80rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero1 .hero-content .counter-area {
+    padding-top: 40px;
+}
+
+.hero1 .hero-content .counter-area .counter-single {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+}
+
+.hero1 .hero-content .counter-area .counter-single .counter-icon {
+    padding-right: 45px;
+    position: relative;
+}
+
+.hero1 .hero-content .counter-area .counter-single .counter-icon::after {
+    content: "";
+    border: 1px solid #00a7ac;
+    border-radius: 5px;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    left: -13px;
+    top: -13px;
+    transform: rotate(45deg);
+}
+
+.hero1 .hero-content .counter-area .counter-single .coundown p {
+    margin-bottom: 0;
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.example {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero1 .hero-content .counter-area .counter-single .coundown h3 {
+    /*font-family: var(--font-exo2);*/
+    font-weight: 600;
+    font-size: 30px;
+    color: #00A7AC;
+    margin-bottom: 0;
+}
+
+.hero1 .hero-content .job-search-area {
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, .4);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, .25);
+    border-radius: 5px;
+    max-width: 200px;
+    margin: 80px auto 0;
+}
+
+.hero1 .hero-content .job-search-area .button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 20px;
+}
+
+.primary-btn {
+    height: 40px !important;
+    padding: 0 16px !important;
+}
+
+.ant-btn-primary {
+    background-color: #00A7AC !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.section-title1 h2 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #061421;
+    font-family: "Exo 2", sans-serif;
+    line-height: 48px;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    text-transform: capitalize;
+}
+
+.section-title1 h2 span {
+    color: #00A7AC;
+}
+
+.section-title1 p {
+    margin-bottom: 0;
+    font-size: 2.125rem;
+}
+
+.single-work-process {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-color: rgba(0, 167, 172, .1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    position: relative;
+    margin: 0 auto 20px;
+    transition: .35s;
+}
+
+.single-work-process:hover {
+    border: 1px solid rgba(0, 167, 172, .4);
+}
+
+.icons {
+    margin-bottom: 12px;
+}
+
+.work-content h5 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #061421;
+    font-family: "Exo 2", sans-serif;
+    transition: .35s;
+}
+
+p {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #595959;
+    font-family: "Work Sans", sans-serif;
+    line-height: 26px;
+}
+
+.work-content {
+    text-align: center;
+}
+
+.single-work-process.one::after {
+    content: url("../public/work-up-arrow.svg");
+    position: absolute;
+    top: -20px;
+}
+
+.single-work-process.two::after {
+    content: url("../public/work-down-arrow.svg");
+    position: absolute;
+    bottom: -25px;
+}
+
+@media (max-width: 576px) {
+    .hero1 .hero-content h1 {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero1 .hero-content h1 {
+        font-size: 4rem;
+    }
+}

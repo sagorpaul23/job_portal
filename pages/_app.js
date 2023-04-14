@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import "../styles/index.css"
 import {ConfigProvider as CountryPhoneConfigProvider} from 'antd-country-phone-input';
 import en from 'world_countries_lists/data/countries/en/world.json';
 import 'antd-country-phone-input/dist/index.css';
