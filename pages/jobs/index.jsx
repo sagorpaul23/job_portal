@@ -80,9 +80,7 @@ const Jobs = ({jobs}) => {
                                                 </Typography.Title>
                                             </Link>
 
-                                            <Typography.Text type="secondary">
-                                                {job?.description?.length > 245 ? job?.description.slice(0, 245) + ' ...' : job?.description}
-                                            </Typography.Text>
+                                            <div className={styles.job_description} dangerouslySetInnerHTML={{__html:job?.description}}></div>
 
                                         </div>
                                         {/***Card Footer***/}
