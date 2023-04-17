@@ -8,5 +8,103 @@
 }
 
 .card {
-    box-shadow:none !important;
+    box-shadow: none !important;
 }
+
+.talentWrap {
+    background-image: url("../public/talent/home2-talent-bg.png");
+    background-color: rgba(0, 0, 0, .65);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 60px;
+    height: 235px;
+    gap: 20px;
+}
+
+.talentContent h4 {
+    font-weight: 600;
+    font-size: 1.625rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.talentContent h4 span {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #00A7AC;
+}
+
+.talentContent p {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 30px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.primryBtn2 {
+    font-weight: 500;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    border-radius: 5px !important;
+    background-color: #00A7AC !important;
+    position: relative;
+    transition: .5s all ease;
+    z-index: 1;
+}
+
+.talentArea {
+    margin: 60px auto;
+}
+
+@media (min-width: 576px) {
+    .talentArea {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .talentArea {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .talentArea {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .talentArea {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .talentArea {
+        max-width: 1320px;
+    }
+}
+
+@media (max-width: 767px) {
+    .talentWrap {
+        flex-wrap: wrap;
+        height: unset;
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .talentWrap {
+        padding: 30px;
+    }
+}
+

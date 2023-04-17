@@ -11,6 +11,7 @@ import Job from "../public/job2.svg"
 import Companies from "../public/companies.svg"
 import Candidates from "../public/candidates.svg"
 import NewJobs from "../public/new-jobs.svg"
+import TalentImage from "../public/talent/home-talent-img.png"
 
 export default function Home() {
     return (
@@ -107,52 +108,74 @@ export default function Home() {
                         </div>
                     </Col>
                 </Row>
-                <Row justify={'center'}>
-                    <Col sm={12} lg={8} xl={5}>
-                        <div className="single-work-process one text-center">
-                            <div className="icons">
-                                <Image src={AccountCreate} alt={'account create'}/>
+
+                <div className={styles.talentArea}>
+                    <Row gutter={[0, {xs: 30, sm: 16, md: 24, lg: 32}]} justify={'center'}>
+                        <Col xs={24} sm={12} lg={8} xl={6}>
+                            <div className="single-work-process one text-center">
+                                <div className="icons">
+                                    <Image src={AccountCreate} alt={'account create'}/>
+                                </div>
+                                <div className="work-content">
+                                    <h5>Account Create</h5>
+                                    <p>To create your account be confident & safely.</p>
+                                </div>
                             </div>
-                            <div className="work-content">
-                                <h5>Account Create</h5>
-                                <p>To create your account be confident & safely.</p>
+                        </Col>
+                        <Col xs={24} sm={12} lg={8} xl={6}>
+                            <div className="single-work-process two text-center">
+                                <div className="icons">
+                                    <Image src={CreateResume} alt={'account create'}/>
+                                </div>
+                                <div className="work-content">
+                                    <h5>Create Resume</h5>
+                                    <p>To create your account be confident & safely.</p>
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                    <Col sm={12} lg={8} xl={5}>
-                        <div className="single-work-process two text-center">
-                            <div className="icons">
-                                <Image src={CreateResume} alt={'account create'}/>
+                        </Col>
+                        <Col xs={24} sm={12} lg={8} xl={6}>
+                            <div className="single-work-process one text-center">
+                                <div className="icons">
+                                    <Image src={FindJobs} alt={'account create'}/>
+                                </div>
+                                <div className="work-content">
+                                    <h5>Find Jobs</h5>
+                                    <p>To create your account be confident & safely.</p>
+                                </div>
                             </div>
-                            <div className="work-content">
-                                <h5>Create Resume</h5>
-                                <p>To create your account be confident & safely.</p>
+                        </Col>
+                        <Col xs={24} sm={12} lg={8} xl={6}>
+                            <div className="single-work-process two text-center">
+                                <div className="icons">
+                                    <Image src={ApplyJobs} alt={'account create'}/>
+                                </div>
+                                <div className="work-content">
+                                    <h5>Apply Jobs</h5>
+                                    <p>To create your account be confident & safely.</p>
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                    <Col sm={12} lg={8} xl={5}>
-                        <div className="single-work-process one text-center">
-                            <div className="icons">
-                                <Image src={FindJobs} alt={'account create'}/>
+                        </Col>
+                    </Row>
+                </div>
+
+                <div className={styles.talentArea}>
+                    <Row>
+                        <Col span={24}>
+                            <div className={styles.talentWrap}>
+                                <div className={styles.talentContent}>
+                                    <h4>Are You Looking For A <span>Dream Job?</span></h4>
+                                    <p>2400+ candidates are available for your company.</p>
+                                </div>
+                                <div className="talent-img">
+                                    <Image src={TalentImage} alt={"talent-img"}/>
+                                </div>
+                                <div className="find-btn">
+                                    <Button type={'primary'} className={styles.primryBtn2}>Find Now</Button>
+                                </div>
                             </div>
-                            <div className="work-content">
-                                <h5>Find Jobs</h5>
-                                <p>To create your account be confident & safely.</p>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col sm={12} lg={8} xl={5}>
-                        <div className="single-work-process two text-center">
-                            <div className="icons">
-                                <Image src={ApplyJobs} alt={'account create'}/>
-                            </div>
-                            <div className="work-content">
-                                <h5>Apply Jobs</h5>
-                                <p>To create your account be confident & safely.</p>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
+                </div>
 
             </Card>
         </div>
